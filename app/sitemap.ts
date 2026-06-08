@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = "https://devdesk.com.br";
+const BASE = "https://devdesktech.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Páginas públicas indexáveis (a /obrigado fica de fora de propósito).
