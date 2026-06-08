@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 // ─── Substitua pelos seus dados ────────────────────────────────────────────
-const WHATSAPP = "5569999999999"; // DDI+DDD+número, só dígitos
+const WHATSAPP = "5569999222517"; // DDI+DDD+número, só dígitos
 const WHATSAPP_MSG = "Olá! Vim pelo site e quero um orçamento.";
 const EMAIL = "contato@devdesk.com.br";
 const CIDADE = "Rondônia / RO";
@@ -15,7 +15,7 @@ const servicos = [
     titulo: "Sua empresa encontrada no Google e levada a sério.",
     texto:
       "Site rápido, responsivo e otimizado pra aparecer nas buscas e transformar visitante em cliente. Presença profissional, sem enrolação.",
-    preco: "A partir de R$ 1.500",
+    preco: "A partir de R$ 997",
     icon: "🌐",
   },
   {
@@ -23,7 +23,7 @@ const servicos = [
     titulo: "Venda online sem depender só do balcão.",
     texto:
       "Loja completa com checkout que converte, cadastro de produtos, pagamento e frete configurados. Sua marca vendendo 24h por dia.",
-    preco: "A partir de R$ 2.900",
+    preco: "A partir de R$ 1.997",
     icon: "🛒",
   },
   {
@@ -31,7 +31,7 @@ const servicos = [
     titulo: "Pare de fazer no caderno, na planilha e no grito.",
     texto:
       "Sistemas web feitos pra sua operação: controle de clientes, automações, painéis, integrações. Software pensado pro seu processo.",
-    preco: "Sob orçamento · a partir de R$ 8.000",
+    preco: "Sob orçamento · a partir de R$ 5.970",
     icon: "⚙️",
   },
   {
@@ -103,14 +103,14 @@ function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
         <a href="#topo" className="flex items-center gap-2.5">
           <Image
-            src="/images/logo-devdesk-site.png"
-            alt="DevDesk Tecnologia"
-            width={140}
-            height={48}
+            src="/images/logo-devdesk-icon-coral.png"
+            alt="DevDesk"
+            width={106}
+            height={24}
             priority
-            className="h-9 w-auto"
+            className="h-6 w-auto"
           />
-          <span className="sr-only">DevDesk Tecnologia</span>
+          <Logo className="text-xl" />
         </a>
 
         <nav className="hidden items-center gap-7 text-sm text-zinc-400 md:flex">
@@ -142,6 +142,17 @@ function Header() {
 function Hero() {
   return (
     <section id="topo" className="relative overflow-hidden">
+      {/* Imagem de fundo do destaque */}
+      <Image
+        src="/images/hero-bg.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="pointer-events-none object-cover opacity-30"
+      />
+      {/* Gradiente escuro pra manter o texto legível sobre a imagem */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
       <div className="glow pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-6xl px-5 pt-20 pb-24 sm:pt-28 sm:pb-32">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-zinc-300">
@@ -343,18 +354,49 @@ function Cases() {
             clientes, prazos fiscais, processamento de NF-e e portal do cliente.
             Construído do zero, da arquitetura ao deploy.
           </p>
-          <p className="mt-5 text-sm font-medium text-zinc-400">
-            Prova de que a DevDesk não monta site — constrói sistema.
-          </p>
+          <a
+            href="https://tabilize.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-soft transition-colors hover:text-white"
+          >
+            tabilize.com.br <span aria-hidden>↗</span>
+          </a>
         </article>
 
-        <article className="reveal flex flex-col justify-center rounded-3xl border border-dashed border-white/12 bg-white/[0.02] p-8">
-          <p className="text-sm font-semibold text-zinc-500">E-commerce</p>
-          <h3 className="mt-3 text-2xl font-bold text-zinc-200">Brazano</h3>
-          <p className="mt-4 leading-7 text-zinc-400">
-            Loja virtual para venda de cafés especiais.{" "}
-            <span className="text-zinc-500">(em breve)</span>
+        <article className="reveal relative overflow-hidden rounded-3xl border border-white/8 bg-gradient-to-br from-brand/10 to-transparent p-8">
+          <p className="text-sm font-semibold text-brand-soft">SaaS · Disparo de mensagens</p>
+          <h3 className="mt-3 text-2xl font-bold text-white">Zylo</h3>
+          <p className="mt-4 leading-7 text-zinc-300">
+            Plataforma de disparo de mensagens em escala: campanhas, contatos e
+            automações pra empresas falarem com seus clientes sem trabalho manual.
+            Construída do zero, da arquitetura ao deploy.
           </p>
+          <a
+            href="https://usezylo.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-soft transition-colors hover:text-white"
+          >
+            usezylo.com.br <span aria-hidden>↗</span>
+          </a>
+        </article>
+
+        <article className="reveal relative overflow-hidden rounded-3xl border border-white/8 bg-gradient-to-br from-brand/10 to-transparent p-8">
+          <p className="text-sm font-semibold text-brand-soft">E-commerce · Café</p>
+          <h3 className="mt-3 text-2xl font-bold text-white">Brazano</h3>
+          <p className="mt-4 leading-7 text-zinc-300">
+            Loja virtual para venda de cafés especiais: catálogo de produtos,
+            checkout, pagamento e frete configurados. Vendendo online, 24h por dia.
+          </p>
+          <a
+            href="https://brazanocafe.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-soft transition-colors hover:text-white"
+          >
+            brazanocafe.com.br <span aria-hidden>↗</span>
+          </a>
         </article>
       </div>
     </section>
@@ -424,18 +466,28 @@ function Footer() {
   return (
     <footer className="border-t border-white/5">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-10 sm:flex-row">
-        <Image
-          src="/images/logo-devdesk-site.png"
-          alt="DevDesk Tecnologia"
-          width={120}
-          height={40}
-          className="h-8 w-auto opacity-80"
-        />
+        <div className="flex flex-col items-center gap-2 sm:items-start">
+          <Image
+            src="/images/logo-devdesk-icon-coral.png"
+            alt="DevDeskTech"
+            width={124}
+            height={28}
+            className="h-7 w-auto opacity-90"
+          />
+          <Logo className="text-lg opacity-80" />
+        </div>
         <p className="text-center text-sm text-zinc-500 sm:text-right">
           DevDesk Tecnologia · {CIDADE}
           <br className="sm:hidden" />
           <span className="hidden sm:inline"> · </span>
           {EMAIL}
+          <br />
+          <a
+            href="/privacidade"
+            className="text-zinc-500 underline-offset-2 transition-colors hover:text-zinc-300 hover:underline"
+          >
+            Política de Privacidade
+          </a>
         </p>
       </div>
     </footer>
@@ -455,6 +507,17 @@ function WhatsAppFlutuante() {
       <WhatsAppIcon />
       <span className="hidden sm:inline">Fala comigo 👋</span>
     </a>
+  );
+}
+
+/* ─────────────────────────────── LOGO ───────────────────────────────── */
+function Logo({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`font-bold leading-none tracking-tight text-white ${className}`}
+    >
+      DevDesk<span className="text-brand-soft">Tech</span>
+    </span>
   );
 }
 

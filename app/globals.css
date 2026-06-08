@@ -3,8 +3,8 @@
 :root {
   --background: #07070a;
   --foreground: #f4f4f5;
-  --brand: #f2244e;
-  --brand-soft: #ff5c7a;
+  --brand: #ff5a36;
+  --brand-soft: #ff8463;
 }
 
 @theme inline {
@@ -30,8 +30,8 @@ body {
 /* Subtle radial glow used behind the hero and CTA */
 .glow {
   background:
-    radial-gradient(60% 50% at 50% 0%, rgba(242, 36, 78, 0.18) 0%, transparent 70%),
-    radial-gradient(40% 40% at 85% 30%, rgba(255, 92, 122, 0.1) 0%, transparent 70%);
+    radial-gradient(60% 50% at 50% 0%, rgba(255, 90, 54, 0.18) 0%, transparent 70%),
+    radial-gradient(40% 40% at 85% 30%, rgba(255, 132, 99, 0.1) 0%, transparent 70%);
 }
 
 /* Reveal-on-scroll without JS using animation-timeline */
