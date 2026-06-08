@@ -14,6 +14,10 @@ export async function POST(request: Request) {
     tel: String(lead.tel ?? "").slice(0, 40),
     ramo: String(lead.ramo ?? "").slice(0, 80),
     origem: String(lead.origem ?? "").slice(0, 80),
+    utm_source: String(lead.utm_source ?? "").slice(0, 120),
+    utm_campaign: String(lead.utm_campaign ?? "").slice(0, 120),
+    utm_content: String(lead.utm_content ?? "").slice(0, 120),
+    fbclid: String(lead.fbclid ?? "").slice(0, 200),
   };
 
   const url = process.env.LEAD_WEBHOOK_URL;

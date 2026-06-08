@@ -15,13 +15,20 @@ function maskTel(v: string) {
   return `(${d.slice(0, 2)}) ${d.slice(2, 3)} ${d.slice(3, 7)}-${d.slice(7)}`;
 }
 
+// Lê UTMs e fbclid da URL pra saber qual anúncio gerou o lead.
+function getTracking(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const p = new URLSearchParams(window.location.search);
+  return {
+    utm_source: p.get("utm_source") || "",
+    utm_campaign: p.get("utm_campaign") || "",
+    utm_content: p.get("utm_content") || "",
+    fbclid: p.get("fbclid") || "",
+  };
+}
+
 // Salva o lead na nossa API (que repassa pra planilha) sem travar o fluxo.
-function saveLead(data: {
-  nome: string;
-  tel: string;
-  ramo: string;
-  origem: string;
-}) {
+function saveLead(data: Record<string, string>) {
   try {
     fetch("/api/lead", {
       method: "POST",
@@ -57,7 +64,8 @@ export default function Lp() {
     if (ramo) msg += ` Ramo: ${ramo}.`;
     if (tel) msg += ` Meu WhatsApp: ${tel}.`;
     const temLead = !!(nome || tel);
-    if (temLead) saveLead({ nome, tel, ramo, origem: "lp-site-7-dias" });
+    if (temLead)
+      saveLead({ nome, tel, ramo, origem: "lp-site-7-dias", ...getTracking() });
     setSubmitting(true);
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,
