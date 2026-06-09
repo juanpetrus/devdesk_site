@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://devdesk.com.br"),
+  metadataBase: new URL("https://devdesktech.com"),
   title: "DevDesk Tecnologia — Sites, lojas virtuais e sistemas sob medida",
   description:
     "Tiramos sua empresa do WhatsApp e da planilha. Sites que vendem, lojas que convertem e sistemas que automatizam — feitos por quem desenvolve de verdade.",

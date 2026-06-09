@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const EMAIL = "contato@devdesk.com.br";
+const EMAIL = "contato.devdesk@gmail.com";
 const CIDADE = "Porto Velho, RO";
 const ATUALIZADO = "8 de junho de 2026";
 

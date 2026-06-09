@@ -3,7 +3,7 @@ import Image from "next/image";
 // ─── Substitua pelos seus dados ────────────────────────────────────────────
 const WHATSAPP = "5569999222517"; // DDI+DDD+número, só dígitos
 const WHATSAPP_MSG = "Olá! Vim pelo site e quero um orçamento.";
-const EMAIL = "contato@devdesk.com.br";
+const EMAIL = "contato.devdesk@gmail.com";
 const CIDADE = "Rondônia / RO";
 // ───────────────────────────────────────────────────────────────────────────
 
