@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MetaPixel from "./components/MetaPixel";
+import {
+  GoogleTagManager,
+  GoogleTagManagerNoScript,
+} from "./components/GoogleTagManager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +49,11 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <GoogleTagManager />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <GoogleTagManagerNoScript />
         <MetaPixel />
         {children}
       </body>
