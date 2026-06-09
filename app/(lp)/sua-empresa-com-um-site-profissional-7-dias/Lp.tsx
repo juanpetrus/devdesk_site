@@ -319,7 +319,7 @@ export default function Lp() {
               <p className="price-tag">
                 Site profissional completo
                 <span className="num">
-                  <small>a partir de R$</small> 1.497
+                  <small>a partir de R$</small> 997
                 </span>
                 em até 12x no cartão.
               </p>
@@ -329,10 +329,12 @@ export default function Lp() {
               </p>
             </div>
             <div className="mrr-box">
-              <span className="tag">↑ E depois?</span>
+              <span className="tag">↑ E depois? (opcional)</span>
               <div className="mrr-num">
                 + R$ 297
-                <span style={{ fontSize: 15, color: "var(--muted)" }}>/mês</span>
+                <span style={{ fontSize: 15, color: "var(--muted)" }}>
+                  /mês · opcional
+                </span>
               </div>
               <p>
                 Plano de manutenção opcional: hospedagem, segurança, atualizações
@@ -444,7 +446,7 @@ export default function Lp() {
               Esse preço é o final mesmo? Vai aparecer taxa escondida?
             </summary>
             <p>
-              O preço a partir de R$ 1.497 cobre o site institucional completo. O
+              O preço a partir de R$ 997 cobre o site institucional completo. O
               valor fechado depende do escopo (quantas páginas, funções) e é
               confirmado na conversa, antes de qualquer coisa. Sem surpresa.
             </p>
