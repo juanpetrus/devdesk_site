@@ -1,6 +1,8 @@
 // Recebe o lead do formulário das LPs e repassa pra planilha do Google
 // (Apps Script). A URL fica em LEAD_WEBHOOK_URL — nunca exposta no cliente.
 
+import { getPostHogClient } from "@/lib/posthog-server";
+
 export async function POST(request: Request) {
   let lead: Record<string, unknown>;
   try {
@@ -37,6 +39,19 @@ export async function POST(request: Request) {
     console.error("[lead] falha ao enviar pro webhook", err);
     return Response.json({ ok: false, saved: false }, { status: 502 });
   }
+
+  const posthog = getPostHogClient();
+  posthog.capture({
+    distinctId: payload.tel || payload.nome || "anonymous",
+    event: "lead_api_received",
+    properties: {
+      origem: payload.origem,
+      ramo: payload.ramo,
+      utm_source: payload.utm_source,
+      utm_campaign: payload.utm_campaign,
+      utm_content: payload.utm_content,
+    },
+  });
 
   return Response.json({ ok: true, saved: true });
 }

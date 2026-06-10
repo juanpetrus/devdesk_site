@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WaCta } from "./components/WaCta";
 
 // ─── Substitua pelos seus dados ────────────────────────────────────────────
 const WHATSAPP = "5569999222517"; // DDI+DDD+número, só dígitos
@@ -125,14 +126,13 @@ function Header() {
           </a>
         </nav>
 
-        <a
+        <WaCta
           href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
+          section="header"
           className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition-transform hover:scale-[1.03]"
         >
           Pedir orçamento
-        </a>
+        </WaCta>
       </div>
     </header>
   );
@@ -171,15 +171,14 @@ function Hero() {
         </p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
+          <WaCta
             href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            section="hero"
             className="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-base font-semibold text-white shadow-xl shadow-brand/30 transition-transform hover:scale-[1.03]"
           >
             Pedir orçamento no WhatsApp
             <span aria-hidden>→</span>
-          </a>
+          </WaCta>
           <a
             href="#cases"
             className="inline-flex items-center justify-center rounded-full border border-white/15 px-7 py-3.5 text-base font-semibold text-zinc-200 transition-colors hover:bg-white/5"
@@ -285,14 +284,13 @@ function Servicos() {
       </div>
 
       <div className="mt-10">
-        <a
+        <WaCta
           href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
+          section="services"
           className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand/25 transition-transform hover:scale-[1.03]"
         >
           Quero um orçamento <span aria-hidden>→</span>
-        </a>
+        </WaCta>
       </div>
     </section>
   );
@@ -441,14 +439,13 @@ function CtaFinal() {
         </p>
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
+          <WaCta
             href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            section="cta_final"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-base font-semibold text-white shadow-xl shadow-brand/30 transition-transform hover:scale-[1.03]"
           >
             Falar no WhatsApp <span aria-hidden>→</span>
-          </a>
+          </WaCta>
           <a
             href={`mailto:${EMAIL}`}
             className="inline-flex items-center justify-center rounded-full border border-white/15 px-8 py-4 text-base font-semibold text-zinc-200 transition-colors hover:bg-white/5"
@@ -497,16 +494,15 @@ function Footer() {
 /* ──────────────────────── WHATSAPP FLUTUANTE ────────────────────────── */
 function WhatsAppFlutuante() {
   return (
-    <a
+    <WaCta
       href={waLink}
-      target="_blank"
-      rel="noopener noreferrer"
+      section="floating"
       aria-label="Falar no WhatsApp"
       className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-semibold text-black shadow-2xl shadow-black/40 transition-transform hover:scale-105"
     >
       <WhatsAppIcon />
       <span className="hidden sm:inline">Fala comigo 👋</span>
-    </a>
+    </WaCta>
   );
 }
 

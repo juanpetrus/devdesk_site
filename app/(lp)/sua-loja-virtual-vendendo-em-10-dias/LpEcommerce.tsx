@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 
 // Número do WhatsApp (DDI 55 + DDD + número, só dígitos)
 const WHATSAPP = "5569999222517";
@@ -64,7 +65,16 @@ export default function LpEcommerce() {
     if (ramo) msg += ` Vendo: ${ramo}.`;
     if (tel) msg += ` Meu WhatsApp: ${tel}.`;
     const temLead = !!(nome || tel);
-    if (temLead)
+    if (temLead) {
+      const distinctId = tel || nome;
+      posthog.identify(distinctId, { name: nome, phone: tel, ramo });
+      posthog.capture("lead_submitted", {
+        source: "lp-loja-virtual-10-dias",
+        has_nome: !!nome,
+        has_tel: !!tel,
+        has_ramo: !!ramo,
+        ramo,
+      });
       saveLead({
         nome,
         tel,
@@ -72,6 +82,11 @@ export default function LpEcommerce() {
         origem: "lp-loja-virtual-10-dias",
         ...getTracking(),
       });
+    } else {
+      posthog.capture("whatsapp_cta_clicked", {
+        source: "lp-loja-virtual-10-dias",
+      });
+    }
     setSubmitting(true);
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,

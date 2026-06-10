@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import posthog from "posthog-js";
 
 // Dispara os eventos de conversão quando a página de obrigado carrega:
 // - "Lead" do Meta Pixel (fbq)
@@ -9,6 +10,8 @@ import { useEffect } from "react";
 // script ainda não tenha inicializado.
 export default function TrackLead() {
   useEffect(() => {
+    posthog.capture("lead_converted");
+
     let tries = 0;
     let fbqFired = false;
     let gtagFired = false;
