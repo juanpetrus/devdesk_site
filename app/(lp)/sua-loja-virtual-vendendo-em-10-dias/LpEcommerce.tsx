@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import posthog from "posthog-js";
+import { gtagEvent } from "@/lib/gtag";
 
 // Número do WhatsApp (DDI 55 + DDD + número, só dígitos)
 const WHATSAPP = "5569999222517";
@@ -75,6 +76,7 @@ export default function LpEcommerce() {
         has_ramo: !!ramo,
         ramo,
       });
+      gtagEvent("generate_lead", { source: "lp-loja-virtual-10-dias" });
       saveLead({
         nome,
         tel,
@@ -86,6 +88,7 @@ export default function LpEcommerce() {
       posthog.capture("whatsapp_cta_clicked", {
         source: "lp-loja-virtual-10-dias",
       });
+      gtagEvent("whatsapp_cta_clicked", { source: "lp-loja-virtual-10-dias" });
     }
     setSubmitting(true);
     window.open(

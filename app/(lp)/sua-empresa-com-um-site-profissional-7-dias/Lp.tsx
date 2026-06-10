@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import posthog from "posthog-js";
+import { gtagEvent } from "@/lib/gtag";
 
 // Número do WhatsApp (DDI 55 + DDD + número, só dígitos)
 const WHATSAPP = "5569999222517";
@@ -75,11 +76,13 @@ export default function Lp() {
         has_ramo: !!ramo,
         ramo,
       });
+      gtagEvent("generate_lead", { source: "lp-site-7-dias" });
       saveLead({ nome, tel, ramo, origem: "lp-site-7-dias", ...getTracking() });
     } else {
       posthog.capture("whatsapp_cta_clicked", {
         source: "lp-site-7-dias",
       });
+      gtagEvent("whatsapp_cta_clicked", { source: "lp-site-7-dias" });
     }
     setSubmitting(true);
     window.open(

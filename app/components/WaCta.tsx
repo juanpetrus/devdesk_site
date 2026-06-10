@@ -2,6 +2,7 @@
 
 import posthog from "posthog-js";
 import type { ReactNode } from "react";
+import { gtagEvent } from "@/lib/gtag";
 
 interface WaCtaProps {
   href: string;
@@ -17,6 +18,7 @@ export function WaCta({ href, section, className, "aria-label": ariaLabel, child
       section,
       page: "home",
     });
+    gtagEvent("whatsapp_cta_clicked", { section, page: "home" });
   };
 
   return (
