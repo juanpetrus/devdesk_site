@@ -5,7 +5,7 @@ import posthog from "posthog-js";
 
 // Dispara os eventos de conversão quando a página de obrigado carrega:
 // - "Lead" do Meta Pixel (fbq)
-// - "conversion_event_submit_lead_form" do Google Ads/GA4 (gtag)
+// - "conversion_event_purchase_1" do Google Ads/GA4 (gtag)
 // Cada evento dispara UMA vez; segue tentando por alguns segundos caso o
 // script ainda não tenha inicializado.
 export default function TrackLead() {
@@ -27,7 +27,7 @@ export default function TrackLead() {
         fbqFired = true;
       }
       if (!gtagFired && win.gtag) {
-        win.gtag("event", "conversion_event_submit_lead_form");
+        win.gtag("event", "conversion_event_purchase_1");
         gtagFired = true;
       }
 
