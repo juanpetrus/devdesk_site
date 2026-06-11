@@ -77,6 +77,10 @@ export default function Lp() {
         ramo,
       });
       gtagEvent("generate_lead", { source: "lp-site-7-dias" });
+      // Conversão do Google Ads: envio do formulário de lead.
+      gtagEvent("conversion_event_submit_lead_form_1", {
+        source: "lp-site-7-dias",
+      });
       saveLead({ nome, tel, ramo, origem: "lp-site-7-dias", ...getTracking() });
     } else {
       posthog.capture("whatsapp_cta_clicked", {
@@ -144,7 +148,9 @@ export default function Lp() {
               className="logo-mark"
               priority
             />
-            DevDesk<span className="tech">Tech</span>
+            <span className="logo-text">
+              DevDesk<span className="tech">Tech</span>
+            </span>
           </div>
           <a href="#contato" className="btn btn-primary" onClick={goWpp}>
             <WppIcon />
@@ -592,11 +598,6 @@ export default function Lp() {
           Quero meu site em 7 dias
         </a>
       </div>
-      <script>
-        gtag('event', 'conversion_event_submit_lead_form_1', {
-          // <event_parameters>
-        });
-      </script>
     </div>
   );
 }

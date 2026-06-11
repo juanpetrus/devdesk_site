@@ -136,7 +136,7 @@ export default function LpEcommerce() {
               className="logo-mark"
               priority
             />
-            DevDesk
+            <span className="logo-text">DevDesk</span>
           </div>
           <a href="#contato" className="btn btn-primary" onClick={goWpp}>
             <WppIcon />

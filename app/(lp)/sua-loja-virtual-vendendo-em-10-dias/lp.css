@@ -206,20 +206,17 @@
   margin-bottom: 22px;
 }
 .lp-scope h1 .hl {
-  position: relative;
-  white-space: nowrap;
-}
-.lp-scope h1 .hl::after {
-  content: "";
-  position: absolute;
-  left: -2px;
-  right: -2px;
-  bottom: 6px;
-  height: 14px;
-  background: var(--accent);
-  opacity: 0.28;
-  z-index: -1;
-  border-radius: 3px;
+  /* Destaque que acompanha a quebra de linha (cada linha ganha sua faixa),
+     sem forçar nowrap — que estourava a largura no mobile. */
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(100% - 20px),
+    rgba(255, 90, 54, 0.28) calc(100% - 20px),
+    rgba(255, 90, 54, 0.28) calc(100% - 6px),
+    transparent calc(100% - 6px)
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .lp-scope .lede {
   font-size: clamp(17px, 2vw, 20px);
@@ -880,6 +877,10 @@
     padding: 32px;
   }
   .lp-scope .nav .btn-text {
+    display: none;
+  }
+  /* No mobile o header mostra só o ícone, sem o nome. */
+  .lp-scope .logo-text {
     display: none;
   }
   .lp-scope .sticky-cta {
