@@ -97,6 +97,20 @@ export default function Lp() {
     }
   }
 
+  // Botão da hero: leva pro formulário (rola suave e foca o 1º campo).
+  function goToForm(e: React.MouseEvent) {
+    e.preventDefault();
+    posthog.capture("hero_cta_clicked", { source: "lp-site-7-dias" });
+    document
+      .getElementById("contato")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // foca o campo "nome" após o scroll, sem brigar com a rolagem suave
+    window.setTimeout(
+      () => document.getElementById("nome")?.focus({ preventScroll: true }),
+      600,
+    );
+  }
+
   // Reveal on scroll
   useEffect(() => {
     const root = rootRef.current;
@@ -158,7 +172,7 @@ export default function Lp() {
               verdade, não por template pronto.
             </p>
             <div className="hero-cta">
-              <a href="#contato" className="btn btn-primary" onClick={goWpp}>
+              <a href="#contato" className="btn btn-primary" onClick={goToForm}>
                 <WppIcon />
                 Quero meu site
               </a>
