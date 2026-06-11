@@ -592,6 +592,11 @@ export default function Lp() {
           Quero meu site em 7 dias
         </a>
       </div>
+      <script>
+        gtag('event', 'conversion_event_submit_lead_form_1', {
+          // <event_parameters>
+        });
+      </script>
     </div>
   );
 }
