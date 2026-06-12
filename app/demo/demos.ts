@@ -20,4 +20,10 @@ export const demos: Demo[] = [
     segmento: "Bronzeamento & Estética · Porto Velho",
     cor: "linear-gradient(150deg,#7A1620,#C8A25A)",
   },
+  {
+    slug: "madeirao-churrascaria",
+    cliente: "Madeirão Churrascaria",
+    segmento: "Churrascaria · Porto Velho",
+    cor: "linear-gradient(150deg,#2A1A0E,#E0651C)",
+  },
 ];
