@@ -32,4 +32,10 @@ export const demos: Demo[] = [
     segmento: "Fisioterapia · Terapia da dor",
     cor: "linear-gradient(150deg,#ECCBA6,#A1693F)",
   },
+  {
+    slug: "meta-sun",
+    cliente: "Meta Sun Energia Solar",
+    segmento: "Energia solar · Porto Velho",
+    cor: "linear-gradient(150deg,#0C2B5E,#F58220)",
+  },
 ];
