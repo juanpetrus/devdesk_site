@@ -26,4 +26,10 @@ export const demos: Demo[] = [
     segmento: "Churrascaria · Porto Velho",
     cor: "linear-gradient(150deg,#2A1A0E,#E0651C)",
   },
+  {
+    slug: "rafaella-kalena",
+    cliente: "Rafaella Kalena",
+    segmento: "Fisioterapia · Terapia da dor",
+    cor: "linear-gradient(150deg,#ECCBA6,#A1693F)",
+  },
 ];
