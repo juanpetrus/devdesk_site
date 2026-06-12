@@ -14,4 +14,10 @@ export const demos: Demo[] = [
     segmento: "Spa Urbano · Bem-estar",
     cor: "linear-gradient(150deg,#F3E4D7,#E7C9BC)",
   },
+  {
+    slug: "aline-bronze",
+    cliente: "Aline Bronze",
+    segmento: "Bronzeamento & Estética · Porto Velho",
+    cor: "linear-gradient(150deg,#7A1620,#C8A25A)",
+  },
 ];

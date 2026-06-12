@@ -515,7 +515,11 @@ export default function VidaLeve() {
           #vl-root [data-switch]{display:none !important}
         }
       `}</style>
-      <div id="vl-root" dangerouslySetInnerHTML={{ __html: PAGE_HTML }} />
+      <div
+        id="vl-root"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: PAGE_HTML }}
+      />
     </>
   );
 }
