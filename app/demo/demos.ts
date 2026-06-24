@@ -38,4 +38,10 @@ export const demos: Demo[] = [
     segmento: "Energia solar · Porto Velho",
     cor: "linear-gradient(150deg,#0C2B5E,#F58220)",
   },
+  {
+    slug: "brazano-cafe",
+    cliente: "Brazano Café",
+    segmento: "Café especial · E-commerce · Rondônia",
+    cor: "linear-gradient(150deg,#21412E,#D17B4C)",
+  },
 ];
