@@ -173,7 +173,7 @@ const PRODUCTS: Product[] = [
   },
 ];
 
-const GRINDS = ["Grãos inteiros", "Moído · Coado", "Moído · Espresso", "Moído · Prensa Francesa"];
+const GRINDS = ["Grãos", "Moído"];
 
 const STARS = "★★★★★";
 
@@ -201,6 +201,10 @@ const CSS = `
   .bz-related:hover{box-shadow:0 18px 40px rgba(46,34,24,.12)}
   .bz-addbtn{transition:background .2s ease}
   .bz-addbtn:hover{background:#D17B4C !important}
+  .bz-plus{transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+  .bz-plus:hover{background:#D17B4C !important;transform:scale(1.08);box-shadow:0 10px 22px rgba(209,123,76,.42)}
+  .bz-card:hover .bz-cardtitle{color:#3C7A4E}
+  .bz-cardtitle{transition:color .25s ease;font-optical-sizing:auto}
   .bz-primary{transition:background .2s ease}
   .bz-primary:hover{background:#B5612F !important}
   .bz-primaryL{transition:background .2s ease}
@@ -215,11 +219,12 @@ const CSS = `
     .bz-root .bz-nosticky{position:static !important;top:auto !important}
     .bz-root .bz-h1{font-size:44px !important}
     .bz-root .bz-h2{font-size:34px !important}
-    .bz-root .bz-hero{min-height:0 !important}
-    .bz-root .bz-hero-pad{padding:60px 0 70px !important}
-    .bz-root .bz-hero-img{min-height:380px !important}
+    .bz-root .bz-hero{min-height:0 !important;gap:26px !important}
+    .bz-root .bz-hero-pad{padding:56px 0 0 !important}
+    .bz-root .bz-hero-img{min-height:340px !important}
     .bz-root .bz-sobre-img{min-height:420px !important}
     .bz-root .bz-foot{grid-template-columns:1fr 1fr !important;gap:36px !important}
+    .bz-root .bz-trust{display:grid !important;grid-template-columns:1fr 1fr !important;gap:16px 20px !important}
   }
   @media (max-width:620px){
     .bz-root .bz-pad{padding-left:18px !important;padding-right:18px !important}
@@ -320,7 +325,7 @@ export default function Brazano() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
       />
       <style>{CSS}</style>
@@ -390,7 +395,7 @@ export default function Brazano() {
             <div onClick={() => setCartOpen(false)} style={{ ...s("position:absolute;inset:0;background:rgba(30,22,14,.5)"), animation: "bzOverlayIn .25s ease" }}></div>
             <aside style={{ ...s("position:absolute;top:0;right:0;height:100%;width:430px;max-width:92vw;background:#F7F1E6;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.28)"), animation: "bzDrawerIn .32s cubic-bezier(.22,1,.36,1)" }}>
               <div style={s("padding:24px 26px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(46,34,24,.1)")}>
-                <h3 style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:26px;color:#21412E")}>Sua sacola</h3>
+                <h3 style={s("font-family:'Fraunces';font-weight:600;font-size:26px;color:#21412E")}>Sua sacola</h3>
                 <button onClick={() => setCartOpen(false)} style={s("background:none;border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#6B5D4D")}>
                   <Svg html={IC.close} />
                 </button>
@@ -446,8 +451,8 @@ export default function Brazano() {
 
         {/* ===== TOAST ===== */}
         {toast && (
-          <div style={{ ...s("position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:80;background:#21412E;color:#F7F1E6;padding:14px 24px;border-radius:40px;box-shadow:0 14px 40px rgba(0,0,0,.3);display:flex;align-items:center;gap:11px;font-size:14.5px;font-weight:500"), animation: "bzToastIn .3s ease" }}>
-            <span style={s("width:22px;height:22px;border-radius:50%;background:#D17B4C;display:flex;align-items:center;justify-content:center")}>
+          <div style={{ ...s("position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:80;max-width:calc(100vw - 28px);box-sizing:border-box;background:#21412E;color:#F7F1E6;padding:14px 24px;border-radius:24px;box-shadow:0 14px 40px rgba(0,0,0,.3);display:flex;align-items:center;gap:11px;font-size:14.5px;font-weight:500;line-height:1.35;text-align:left"), animation: "bzToastIn .3s ease" }}>
+            <span style={s("width:22px;height:22px;border-radius:50%;background:#D17B4C;display:flex;align-items:center;justify-content:center;flex:none")}>
               <Svg html={IC.check} />
             </span>
             {toast}
@@ -484,10 +489,10 @@ function Home({
             <span style={s("display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(194,154,78,.5);color:#D8C49A;border-radius:40px;padding:8px 17px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:28px")}>
               <span style={s("width:6px;height:6px;border-radius:50%;background:#C29A4E")}></span>Edição Limitada
             </span>
-            <h1 className="bz-h1" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:64px;line-height:1.03;letter-spacing:-.01em;margin-bottom:22px")}>Reserva Tesouro<br />da Amazônia</h1>
+            <h1 className="bz-h1" style={s("font-family:'Fraunces';font-weight:600;font-size:64px;line-height:1.03;letter-spacing:-.01em;margin-bottom:22px")}>Reserva Tesouro<br />da Amazônia</h1>
             <p style={s("font-size:18px;line-height:1.65;color:#C6D2BB;max-width:440px;margin-bottom:18px")}>Café indígena produzido pelo povo <em style={s("font-style:italic;color:#E6B877")}>Tawá Aruá</em>, em Rondônia. Robusta Amazônico selecionado grão a grão, apresentado em garrafa de vidro com estojo.</p>
             <div style={s("display:flex;align-items:center;gap:22px;margin:30px 0 34px")}>
-              <span style={s("font-family:'Cormorant Garamond';font-size:38px;font-weight:600;color:#F2ECDC")}>{fmt(featured.price)}</span>
+              <span style={s("font-family:'Fraunces';font-size:38px;font-weight:600;color:#F2ECDC")}>{fmt(featured.price)}</span>
               <span style={s("font-size:14px;color:#9FB295;line-height:1.4")}>200g · garrafa<br />de vidro</span>
             </div>
             <div style={s("display:flex;gap:14px;flex-wrap:wrap")}>
@@ -499,7 +504,7 @@ function Home({
             <div style={s("position:absolute;inset:38px 0 38px 8px;border-radius:16px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.4)")}>
               <img src={`${A}/reserva-box.jpeg`} alt="Reserva Tesouro da Amazônia" style={s("width:100%;height:100%;object-fit:cover")} />
             </div>
-            <div style={s("position:absolute;bottom:60px;left:-26px;background:#F7F1E6;color:#21412E;border-radius:14px;padding:16px 20px;box-shadow:0 20px 50px rgba(0,0,0,.3);max-width:200px")}>
+            <div style={s("position:absolute;bottom:60px;left:-10px;background:#F7F1E6;color:#21412E;border-radius:14px;padding:16px 20px;box-shadow:0 20px 50px rgba(0,0,0,.3);max-width:200px")}>
               <div style={s("display:flex;align-items:center;gap:8px;margin-bottom:6px")}><span style={s("color:#C29A4E;font-size:15px")}>{STARS}</span></div>
               <p style={s("font-size:13px;line-height:1.45;color:#4A3D2E")}>&ldquo;O café mais especial que já provei. Uma joia da floresta.&rdquo;</p>
             </div>
@@ -509,7 +514,7 @@ function Home({
 
       {/* TRUST STRIP */}
       <section style={s("background:#EFE6D3;border-bottom:1px solid rgba(46,34,24,.07)")}>
-        <div className="bz-pad" style={s("max-width:1240px;margin:0 auto;padding:22px 40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap")}>
+        <div className="bz-pad bz-trust" style={s("max-width:1240px;margin:0 auto;padding:22px 40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap")}>
           {[[IC.truck, "Frete grátis acima de R$ 120"], [IC.shield, "Torrado em pequenos lotes"], [IC.leaf, "Origem rastreável"], [IC.clock, "Pix com 5% off"]].map(([ic, txt]) => (
             <div key={txt} style={s("display:flex;align-items:center;gap:12px;color:#4A3D2E;font-size:14.5px;font-weight:500")}><Svg html={ic} />{txt}</div>
           ))}
@@ -521,8 +526,8 @@ function Home({
         <div className="bz-pad bz-grid2 bz-vpad" style={s("max-width:1240px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:1.04fr .96fr;gap:60px;align-items:center")}>
           <div>
             <span style={s("font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>Sobre nós</span>
-            <h2 className="bz-h2" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:44px;color:#21412E;margin:14px 0 4px;line-height:1.08;letter-spacing:-.01em")}>Cada xícara conta uma história</h2>
-            <p style={s("font-family:'Cormorant Garamond';font-style:italic;font-size:22px;color:#8A7B68;margin-bottom:26px")}>Onde o sabor encontra memória e conexão</p>
+            <h2 className="bz-h2" style={s("font-family:'Fraunces';font-weight:600;font-size:44px;color:#21412E;margin:14px 0 4px;line-height:1.08;letter-spacing:-.01em")}>Cada xícara conta uma história</h2>
+            <p style={s("font-family:'Fraunces';font-style:italic;font-size:22px;color:#8A7B68;margin-bottom:26px")}>Onde o sabor encontra memória e conexão</p>
             <p style={s("font-size:16.5px;line-height:1.78;color:#5A4D3C;margin-bottom:20px")}>Na <strong style={s("color:#21412E;font-weight:600")}>Brazano Café</strong>, acreditamos que o café vai além do sabor: ele conecta memórias, histórias e pessoas. Fundada em 2021, mas com vasta experiência no setor, buscamos levar o melhor do café brasileiro ao mundo, celebrando suas ricas tradições e diversidade cultural.</p>
             <p style={s("font-size:16.5px;line-height:1.78;color:#5A4D3C;margin-bottom:30px")}>Trabalhamos com arábica e robusta, cada um com características únicas, perfeitos para ocasiões e métodos variados. Para nós, um bom café não é só uma bebida; é uma experiência que cria momentos inesquecíveis.</p>
             <blockquote style={s("border-left:3px solid #D17B4C;padding-left:20px;margin:0")}>
@@ -548,7 +553,7 @@ function Home({
           </div>
           <div>
             <span style={s("font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>O que fazemos</span>
-            <h2 className="bz-h2" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:44px;color:#21412E;margin:14px 0 24px;line-height:1.08;letter-spacing:-.01em")}>Sabores que contam histórias</h2>
+            <h2 className="bz-h2" style={s("font-family:'Fraunces';font-weight:600;font-size:44px;color:#21412E;margin:14px 0 24px;line-height:1.08;letter-spacing:-.01em")}>Sabores que contam histórias</h2>
             <p style={s("font-size:16.5px;line-height:1.78;color:#5A4D3C;margin-bottom:20px")}>Na Brazano, selecionamos grãos de cafés excepcionais de produtores brasileiros — mulheres, jovens, agricultores familiares e indígenas — que compartilham nosso compromisso com qualidade e sustentabilidade.</p>
             <p style={s("font-size:16.5px;line-height:1.78;color:#5A4D3C;margin-bottom:28px")}>Nossos rótulos são mais do que embalagens: são janelas para histórias únicas. Descubra detalhes sobre o produtor, a região de origem, os métodos de processamento e o perfil sensorial, criando uma experiência de imersão em cada xícara.</p>
             <p style={s("font-size:16.5px;line-height:1.7;color:#4A3D2E;margin-bottom:6px")}>Conecte-se com a harmonia entre sabores, histórias e propósito.</p>
@@ -561,7 +566,7 @@ function Home({
       <section id="bz-catalogo" className="bz-pad bz-vpad" style={s("max-width:1240px;margin:0 auto;padding:88px 40px 90px")}>
         <div style={s("text-align:center;margin-bottom:56px")}>
           <span style={s("font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>Nossa Coleção</span>
-          <h2 className="bz-h2" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:48px;color:#21412E;margin-top:10px;letter-spacing:-.01em")}>Nossos cafés, um só ritual</h2>
+          <h2 className="bz-h2" style={s("font-family:'Fraunces';font-weight:600;font-size:48px;color:#21412E;margin-top:10px;letter-spacing:-.01em")}>Nossos cafés, um só ritual</h2>
           <p style={s("color:#6B5D4D;font-size:17px;max-width:560px;margin:14px auto 0;line-height:1.6")}>Da Amazônia ao Cerrado Mineiro. Escolha o seu café e a moagem ideal para o seu preparo.</p>
         </div>
         <div className="bz-grid3" style={s("display:grid;grid-template-columns:repeat(3,1fr);gap:30px")}>
@@ -571,13 +576,16 @@ function Home({
                 <img src={p.img} alt={p.name} style={s("width:100%;height:100%;object-fit:cover")} />
                 {p.badge && <span style={s("position:absolute;top:16px;left:16px;background:#21412E;color:#E6B877;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:7px 13px;border-radius:30px")}>{p.badge}</span>}
               </div>
-              <div style={s("padding:24px 24px 26px;display:flex;flex-direction:column;flex:1")}>
-                <span style={s("font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>{p.tagline}</span>
-                <h3 style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:25px;color:#21412E;margin:8px 0 6px;line-height:1.15")}>{p.name}</h3>
-                <p style={s("font-size:13.5px;color:#8A7B68")}>{p.variety} · {p.weight}</p>
-                <div style={s("margin-top:auto;padding-top:20px;display:flex;align-items:center;justify-content:space-between")}>
-                  <span style={s("font-family:'Cormorant Garamond';font-size:27px;font-weight:600;color:#2E2218")}>{fmt(p.price)}</span>
-                  <button onClick={(e) => { e.stopPropagation(); addToCart(p, GRINDS[0], 1); }} className="bz-addbtn" style={s("background:#21412E;color:#F7F1E6;border:none;width:46px;height:46px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none")}>
+              <div style={s("padding:22px 22px 24px;display:flex;flex-direction:column;flex:1")}>
+                <span style={s("font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>{p.tagline}</span>
+                <h3 className="bz-cardtitle" style={s("font-family:'Fraunces';font-weight:600;font-size:23px;color:#21412E;margin:9px 0 7px;line-height:1.14;letter-spacing:-.005em;min-height:52px")}>{p.name}</h3>
+                <p style={s("font-size:13px;color:#9A8B76;letter-spacing:.01em")}>{p.variety} · {p.weight}</p>
+                <div style={s("margin-top:auto;padding-top:18px;border-top:1px solid rgba(46,34,24,.08);display:flex;align-items:flex-end;justify-content:space-between")}>
+                  <span style={s("display:flex;flex-direction:column;line-height:1")}>
+                    <span style={s("font-size:11px;color:#A99C84;margin-bottom:3px")}>a partir de</span>
+                    <span style={s("font-family:'Fraunces';font-size:26px;font-weight:600;color:#2E2218;line-height:1")}>{fmt(p.price)}</span>
+                  </span>
+                  <button aria-label={"Adicionar " + p.name + " à sacola"} onClick={(e) => { e.stopPropagation(); addToCart(p, GRINDS[0], 1); }} className="bz-plus" style={s("background:#21412E;color:#F7F1E6;border:none;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 6px 16px rgba(33,65,46,.28)")}>
                     <Svg html={IC.plus} />
                   </button>
                 </div>
@@ -592,18 +600,18 @@ function Home({
         <div className="bz-pad bz-grid2 bz-vpad" style={s("max-width:1240px;margin:0 auto;padding:90px 40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center")}>
           <div style={s("position:relative")}>
             <div style={s("border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.4);aspect-ratio:3/4")}><img src={`${A}/reserva-beans.jpeg`} alt="Grãos da Reserva" style={s("width:100%;height:100%;object-fit:cover")} /></div>
-            <div style={s("position:absolute;bottom:-24px;right:-24px;background:#D17B4C;color:#fff;border-radius:14px;padding:20px 24px;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.3)")}>
-              <div style={s("font-family:'Cormorant Garamond';font-size:40px;font-weight:600;line-height:1")}>100%</div>
+            <div style={s("position:absolute;bottom:-24px;right:-10px;background:#D17B4C;color:#fff;border-radius:14px;padding:20px 24px;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.3)")}>
+              <div style={s("font-family:'Fraunces';font-size:40px;font-weight:600;line-height:1")}>100%</div>
               <div style={s("font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:2px")}>Origem amazônica</div>
             </div>
           </div>
           <div>
             <span style={s("font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#E6B877;font-weight:600")}>Da floresta para a sua xícara</span>
-            <h2 className="bz-h2" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:46px;line-height:1.08;margin:14px 0 22px;letter-spacing:-.01em")}>Um café com nome,<br />rosto e território</h2>
+            <h2 className="bz-h2" style={s("font-family:'Fraunces';font-weight:600;font-size:46px;line-height:1.08;margin:14px 0 22px;letter-spacing:-.01em")}>Um café com nome,<br />rosto e território</h2>
             <p style={s("font-size:16.5px;line-height:1.75;color:#C7BBA4;margin-bottom:20px")}>A Brazano nasceu em Rondônia, no coração da Amazônia. Trabalhamos lado a lado com produtores e comunidades indígenas — como o povo <strong style={s("color:#E6B877;font-weight:600")}>Tawá Aruá</strong> — para levar o Robusta Amazônico ao mundo, com rastreabilidade e respeito à floresta.</p>
             <div style={s("display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px")}>
               {[["3", "origens", "selecionadas"], ["+12", "famílias", "produtoras"], ["100%", "comércio", "justo"]].map(([n, a, b]) => (
-                <div key={n}><div style={s("font-family:'Cormorant Garamond';font-size:36px;font-weight:600;color:#E6B877")}>{n}</div><div style={s("font-size:13.5px;color:#A99C84;line-height:1.4;margin-top:4px")}>{a}<br />{b}</div></div>
+                <div key={n}><div style={s("font-family:'Fraunces';font-size:36px;font-weight:600;color:#E6B877")}>{n}</div><div style={s("font-size:13.5px;color:#A99C84;line-height:1.4;margin-top:4px")}>{a}<br />{b}</div></div>
               ))}
             </div>
           </div>
@@ -614,7 +622,7 @@ function Home({
       <section style={s("background:#EFE6D3")}>
         <div className="bz-pad" style={s("max-width:760px;margin:0 auto;padding:72px 40px;text-align:center")}>
           <span style={s("font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>Clube Brazano</span>
-          <h2 className="bz-h2" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:40px;color:#21412E;margin:12px 0 14px;letter-spacing:-.01em")}>Receba histórias e ofertas do café</h2>
+          <h2 className="bz-h2" style={s("font-family:'Fraunces';font-weight:600;font-size:40px;color:#21412E;margin:12px 0 14px;letter-spacing:-.01em")}>Receba histórias e ofertas do café</h2>
           <p style={s("color:#6B5D4D;font-size:16px;line-height:1.6;margin-bottom:28px")}>Assine nossa newsletter e ganhe <strong style={s("color:#B5612F")}>10% de desconto</strong> na primeira compra.</p>
           <form onSubmit={(e) => { e.preventDefault(); newsletter(); }} style={s("display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center")}>
             <input type="email" required placeholder="seu@email.com" style={s("flex:1;min-width:240px;background:#fff;border:1px solid rgba(46,34,24,.16);border-radius:40px;padding:15px 22px;font-family:'Jost';font-size:15px;color:#2E2218;outline:none")} />
@@ -673,7 +681,7 @@ function ProductPage({
         <div>
           {cur.badge && <span style={s("display:inline-block;background:#21412E;color:#E6B877;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;padding:7px 14px;border-radius:30px;margin-bottom:16px")}>{cur.badge}</span>}
           <span style={s("display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#D17B4C;font-weight:600;margin-bottom:8px")}>{cur.tagline}</span>
-          <h1 className="bz-h1" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:46px;color:#21412E;line-height:1.08;letter-spacing:-.01em")}>{cur.name}</h1>
+          <h1 className="bz-h1" style={s("font-family:'Fraunces';font-weight:600;font-size:46px;color:#21412E;line-height:1.08;letter-spacing:-.01em")}>{cur.name}</h1>
           <div style={s("display:flex;align-items:center;gap:13px;margin:14px 0 20px")}>
             <span style={s("color:#C29A4E;font-size:16px;letter-spacing:1px")}>{STARS}</span>
             <span style={s("font-size:13.5px;color:#8A7B68")}>128 avaliações</span>
@@ -696,7 +704,7 @@ function ProductPage({
 
           {/* Grind selection */}
           <div style={s("margin-bottom:24px")}>
-            <div style={s("font-size:13.5px;font-weight:600;color:#2E2218;margin-bottom:11px")}>Moagem</div>
+            <div style={s("font-size:13.5px;font-weight:600;color:#2E2218;margin-bottom:11px")}>Tipo</div>
             <div style={s("display:grid;grid-template-columns:1fr 1fr;gap:10px")}>
               {GRINDS.map((g) => {
                 const a = g === grind;
@@ -727,15 +735,15 @@ function ProductPage({
 
       {/* Related */}
       <div style={s("margin-top:80px")}>
-        <h3 style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:32px;color:#21412E;margin-bottom:28px")}>Você também vai gostar</h3>
+        <h3 style={s("font-family:'Fraunces';font-weight:600;font-size:32px;color:#21412E;margin-bottom:28px")}>Você também vai gostar</h3>
         <div className="bz-grid2" style={s("display:grid;grid-template-columns:1fr 1fr;gap:26px")}>
           {related.map((p) => (
             <div key={p.id} className="bz-related" onClick={() => openProduct(p.id)} style={s("background:#fff;border:1px solid rgba(46,34,24,.08);border-radius:16px;overflow:hidden;cursor:pointer;display:flex;align-items:center;gap:0")}>
               <div style={s("width:150px;height:160px;flex:none;background:#EBE2D0")}><img src={p.img} alt={p.name} style={s("width:100%;height:100%;object-fit:cover")} /></div>
               <div style={s("padding:20px 24px;flex:1")}>
                 <span style={s("font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:#D17B4C;font-weight:600")}>{p.tagline}</span>
-                <h4 style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:23px;color:#21412E;margin:5px 0 8px;line-height:1.15")}>{p.name}</h4>
-                <span style={s("font-family:'Cormorant Garamond';font-size:23px;font-weight:600;color:#2E2218")}>{fmt(p.price)}</span>
+                <h4 style={s("font-family:'Fraunces';font-weight:600;font-size:23px;color:#21412E;margin:5px 0 8px;line-height:1.15")}>{p.name}</h4>
+                <span style={s("font-family:'Fraunces';font-size:23px;font-weight:600;color:#2E2218")}>{fmt(p.price)}</span>
               </div>
             </div>
           ))}
@@ -779,7 +787,7 @@ function Checkout({
     return (
       <div className="bz-pad" style={s("max-width:600px;margin:0 auto;padding:90px 40px;text-align:center")}>
         <span style={s("width:88px;height:88px;border-radius:50%;background:#21412E;display:inline-flex;align-items:center;justify-content:center;margin-bottom:26px")}><Svg html={IC.bigCheck} /></span>
-        <h1 className="bz-h1" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:44px;color:#21412E;margin-bottom:14px")}>Pedido confirmado!</h1>
+        <h1 className="bz-h1" style={s("font-family:'Fraunces';font-weight:600;font-size:44px;color:#21412E;margin-bottom:14px")}>Pedido confirmado!</h1>
         <p style={s("font-size:17px;color:#5A4D3C;line-height:1.65;margin-bottom:8px")}>Obrigado pela compra. Enviamos a confirmação e o código de rastreio para o seu e-mail.</p>
         <p style={s("font-size:15px;color:#8A7B68;margin-bottom:30px")}>Pedido <strong style={s("color:#2E2218")}>#BRZ-2026-0847</strong> · Torramos e enviamos em até 2 dias úteis.</p>
         <button onClick={goHome} className="bz-primary" style={s("background:#D17B4C;color:#fff;border:none;border-radius:40px;padding:15px 32px;font-family:'Jost';font-weight:600;font-size:15.5px;cursor:pointer")}>Voltar à loja</button>
@@ -799,7 +807,7 @@ function Checkout({
   return (
     <div className="bz-pad" style={s("max-width:1140px;margin:0 auto;padding:30px 40px 90px")}>
       <button onClick={openCart} style={s("background:none;border:none;cursor:pointer;font-family:'Jost';font-size:14px;color:#6B5D4D;display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:500")}><Svg html={IC.back} />Voltar à sacola</button>
-      <h1 className="bz-h1" style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:42px;color:#21412E;margin-bottom:30px")}>Finalizar compra</h1>
+      <h1 className="bz-h1" style={s("font-family:'Fraunces';font-weight:600;font-size:42px;color:#21412E;margin-bottom:30px")}>Finalizar compra</h1>
       <div className="bz-grid2" style={s("display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start")}>
         {/* Form */}
         <form onSubmit={(e) => { e.preventDefault(); submit(); }} style={s("display:flex;flex-direction:column;gap:30px")}>
@@ -847,7 +855,7 @@ function Checkout({
 
         {/* Summary */}
         <aside className="bz-nosticky" style={s("background:#fff;border:1px solid rgba(46,34,24,.1);border-radius:18px;padding:26px;position:sticky;top:100px")}>
-          <h3 style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:24px;color:#21412E;margin-bottom:18px")}>Resumo do pedido</h3>
+          <h3 style={s("font-family:'Fraunces';font-weight:600;font-size:24px;color:#21412E;margin-bottom:18px")}>Resumo do pedido</h3>
           <div style={s("display:flex;flex-direction:column;gap:14px;margin-bottom:18px;max-height:260px;overflow-y:auto")}>
             {cart.map((item) => (
               <div key={item.key} style={s("display:flex;gap:13px;align-items:center")}>
@@ -860,7 +868,7 @@ function Checkout({
           <div style={s("border-top:1px solid rgba(46,34,24,.1);padding-top:16px;display:flex;flex-direction:column;gap:9px")}>
             <div style={s("display:flex;justify-content:space-between;font-size:14.5px;color:#6B5D4D")}><span>Subtotal</span><span>{fmt(subtotal)}</span></div>
             <div style={s("display:flex;justify-content:space-between;font-size:14.5px;color:#6B5D4D")}><span>Frete</span><span style={s("color:#3C7A4E;font-weight:600")}>{frete ? "Grátis" : fmt(freteCost)}</span></div>
-            <div style={s("display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(46,34,24,.1);margin-top:8px;padding-top:14px")}><span style={s("font-weight:600;font-size:16px;color:#21412E")}>Total</span><span style={s("font-family:'Cormorant Garamond';font-weight:600;font-size:30px;color:#21412E")}>{total}</span></div>
+            <div style={s("display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(46,34,24,.1);margin-top:8px;padding-top:14px")}><span style={s("font-weight:600;font-size:16px;color:#21412E")}>Total</span><span style={s("font-family:'Fraunces';font-weight:600;font-size:30px;color:#21412E")}>{total}</span></div>
           </div>
         </aside>
       </div>
