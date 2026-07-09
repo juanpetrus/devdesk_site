@@ -96,7 +96,7 @@ export default function BpcLoas() {
           #ak-bpc .ak-steps-grid{grid-template-columns:1fr !important}
         }
       `}</style>
-      <div id="ak-bpc" style={{ maxWidth: "100%", overflowX: "hidden", background: "#f5f0e6" }}>
+      <div id="ak-bpc" style={{ maxWidth: "100%", overflowX: "hidden", background: "#f5f0e6", color: "#16233f" }}>
         {/* HEADER */}
         <header
           style={{
@@ -197,7 +197,7 @@ export default function BpcLoas() {
               display: "grid",
               gridTemplateColumns: "1.05fr .95fr",
               gap: 40,
-              alignItems: "end",
+              alignItems: "start",
             }}
           >
             <div style={{ paddingBottom: 72 }}>
@@ -317,7 +317,7 @@ export default function BpcLoas() {
                 </div>
               </div>
             </div>
-            <div style={{ position: "relative", alignSelf: "end" }}>
+            <div style={{ position: "relative", alignSelf: "start" }}>
               <div
                 style={{
                   position: "absolute",
@@ -339,7 +339,7 @@ export default function BpcLoas() {
                 <img
                   src="/demo/adv-kelvyn/lp/kelvyn.jpg"
                   alt="Kelvyn Lebkuchen, advogado"
-                  style={{ display: "block", width: "100%", height: 560, objectFit: "cover", objectPosition: "50% 0%" }}
+                  style={{ display: "block", width: "100%", height: 560, objectFit: "cover", objectPosition: "50% 18%" }}
                 />
                 <div
                   style={{
@@ -617,7 +617,7 @@ export default function BpcLoas() {
                   width: "100%",
                   height: 470,
                   objectFit: "cover",
-                  objectPosition: "50% 0%",
+                  objectPosition: "50% 22%",
                   borderRadius: 16,
                   boxShadow: "0 24px 50px rgba(0,0,0,.4)",
                 }}
