@@ -44,4 +44,10 @@ export const demos: Demo[] = [
     segmento: "Café especial · E-commerce · Rondônia",
     cor: "linear-gradient(150deg,#21412E,#D17B4C)",
   },
+  {
+    slug: "adv-kelvyn",
+    cliente: "Kelvyn Lebkuchen",
+    segmento: "Advocacia · FIES Médicos · RO",
+    cor: "linear-gradient(150deg,#0c0d10,#8a6f3d)",
+  },
 ];
